@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Korpa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Vasa korpa</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Cena</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iteracija kroz proizvode u korpi -->
+        <tr th:each="proizvod : ${proizvodiKorpa}">
+            <td th:text="${proizvod.naziv}"></td>
+            <td th:text="${proizvod.opis}"></td>
+            <td th:text="${proizvod.cena} + ' $'"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:object="${korisnik}" th:action="@{/checkout}" method="post">
+        <div class="form-group">
+            <label for="ime">Ime:</label>
+            <input type="text" class="form-control" id="ime" th:field="*{ime}" required>
+        </div>
+        <div class="form-group">
+            <label for="prezime">Prezime:</label>
+            <input type="text" class="form-control" id="prezime" th:field="*{prezime}" required>
+        </div>
+        <div class="form-group">
+            <label for="adresa">Adresa:</label>
+            <textarea class="form-control" id="adresa" th:field="*{adresa}" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Checkout</button>
+    </form>
+</div>
+
+</body>
+</html>

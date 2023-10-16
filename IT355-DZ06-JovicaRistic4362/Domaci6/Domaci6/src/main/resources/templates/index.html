@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Proizvodi</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <p>
+                <a th:href="@{/mojaKorpa}" class="btn btn-primary btn-lg">Cart</a>
+            </p>
+            <h2 class="text-center mb-5">Lista proizvoda</h2>
+            <div class="row">
+                <!-- Iteracija kroz svaki proizvod i prikaz na kartici -->
+                <div th:each="proizvod : ${proizvodi}" class="col-md-4 mb-4">
+                    <div class="card">
+                        <img th:src="${proizvod.imageUrl}" alt="Slika proizvoda" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" th:text="${proizvod.naziv}"></h5>
+                            <p class="card-text" th:text="${proizvod.opis}"></p>
+                            <p class="card-text"><strong>Cena:</strong> <span th:text="${proizvod.cena}"></span> $</p>
+                            <a th:href="@{/korpa/{id}(id=${proizvod.id})}" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

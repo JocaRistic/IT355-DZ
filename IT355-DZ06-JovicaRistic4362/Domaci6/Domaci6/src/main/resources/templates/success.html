@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Uspesna Kupovina</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Uspesna Kupovina</h2>
+
+    <h4>Podaci o korisniku:</h4>
+    <ul>
+        <li><strong>Ime:</strong> <span th:text="${korisnik.ime}"></span></li>
+        <li><strong>Prezime:</strong> <span th:text="${korisnik.prezime}"></span></li>
+        <li><strong>Adresa:</strong> <span th:text="${korisnik.adresa}"></span></li>
+    </ul>
+
+    <h4 class="mt-4">Ukupna Cena:</h4>
+    <p><strong th:text="${ukupnaCena} + ' $'"></strong></p>
+
+    <div class="text-right mt-3">
+        <a th:href="@{/}" class="btn btn-primary">Povratak na pocetnu</a>
+    </div>
+</div>
+
+</body>
+</html>
